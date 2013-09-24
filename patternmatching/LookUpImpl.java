@@ -16,8 +16,7 @@ public class LookUpImpl implements LookUpInterface{
 	}
 
 	@Override
-	public int lookUpShiftValue(char textChar, int patternLength,
-			Map<String, Integer> shiftLookupMap) {
+	public int lookUpShiftValue(char textChar, int patternLength) {
 		String textKey = textChar+"";
 		if(shiftLookupMap.containsKey(textKey)){
 			return shiftLookupMap.get(textKey);
@@ -45,7 +44,7 @@ public class LookUpImpl implements LookUpInterface{
 			if(matchedCharCount == patternLength){
 				return ( patternRePos - patternLength + 1);
 			}else{
-				patternRePos += lookUp.lookUpShiftValue(text.charAt(patternRePos), patternLength, this.shiftLookupMap);
+				patternRePos += lookUp.lookUpShiftValue(text.charAt(patternRePos), patternLength);
 			}
 		}			
 		return -1;
